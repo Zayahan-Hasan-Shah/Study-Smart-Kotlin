@@ -104,7 +104,7 @@ private fun SubjectCardsSection(
         if( subjectList.isEmpty()){
             Image(
                 modifier = Modifier.size(120.dp).align(Alignment.CenterHorizontally),
-                painter = painterResource(R.drawable.ic_launcher_background),
+                painter = painterResource(R.drawable.img_books),
                 contentDescription = ""
             )
             Text(modifier = Modifier.fillMaxWidth(), text="", style = MaterialTheme.typography.bodySmall, color = Color.Gray, textAlign = TextAlign.Center
