@@ -47,6 +47,7 @@ import com.example.studysmart.presentation.components.DeleteDialog
 
 @Composable
 fun DashboardScreen(){
+
     val subjects = listOf(
         Subject(name = "English", goalHours = 10f, colors = Subject.subjectCardColor[0], subjectId = 0),
         Subject(name = "Computer", goalHours = 10f, colors = Subject.subjectCardColor[1], subjectId = 0),
@@ -220,7 +221,7 @@ fun DashboardScreen(){
                 Spacer(modifier = Modifier.height(20.dp))
             }
             studySeesionsList(
-                sectionTitle = "RECENT STUDY LIST",
+                        sectionTitle = "RECENT STUDY LIST",
                 emptyListText = "You don't have any recent study sessions.\nStart a study session to begin recording your progress",
                 sessions = studySessionList,
                 onDeleteIconClick = {isDeleteDialogOpen= true   }
