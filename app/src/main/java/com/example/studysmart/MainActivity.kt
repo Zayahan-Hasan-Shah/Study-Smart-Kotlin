@@ -15,6 +15,7 @@ import com.example.studysmart.dashboard.DashboardScreen
 import com.example.studysmart.domain.model.Session
 import com.example.studysmart.domain.model.Subject
 import com.example.studysmart.domain.model.Task
+import com.example.studysmart.presentation.session.SessionScreen
 import com.example.studysmart.presentation.subject.SubjectScreen
 import com.example.studysmart.presentation.task.TaskScreen
 import com.example.studysmart.ui.theme.StudysmartTheme
@@ -27,7 +28,8 @@ class MainActivity : ComponentActivity() {
             StudysmartTheme {
 //                DashboardScreen()
 //                SubjectScreen()
-                TaskScreen()
+//                TaskScreen()
+                SessionScreen()
             }
         }
     }
