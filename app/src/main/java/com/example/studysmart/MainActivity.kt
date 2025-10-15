@@ -11,14 +11,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.studysmart.dashboard.DashboardScreen
+import androidx.navigation.NavGraph
 import com.example.studysmart.domain.model.Session
 import com.example.studysmart.domain.model.Subject
 import com.example.studysmart.domain.model.Task
-import com.example.studysmart.presentation.session.SessionScreen
-import com.example.studysmart.presentation.subject.SubjectScreen
-import com.example.studysmart.presentation.task.TaskScreen
 import com.example.studysmart.ui.theme.StudysmartTheme
+import com.ramcosta.composedestinations.DestinationsNavHost
+import com.ramcosta.composedestinations.spec.NavGraphSpec
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +28,8 @@ class MainActivity : ComponentActivity() {
 //                DashboardScreen()
 //                SubjectScreen()
 //                TaskScreen()
-                SessionScreen()
+//                SessionScreen()
+                DestinationsNavHost(navGraph = NavGraphs.root)
             }
         }
     }

@@ -50,15 +50,37 @@ import java.time.Instant
 import androidx.compose.material3.SelectableDates
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.Navigator
 import com.example.studysmart.presentation.components.SubjectListBottomSheet
 import com.example.studysmart.subjects
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.ZoneId
 
+data class TaskScreenNavArgs(
+    val taskId: Int?,
+    val subjectId: Int?,
+
+
+)
+
+@Destination(navArgsDelegate = TaskScreenNavArgs::class)
+@Composable
+fun TaskScreenRoute(
+    navigator: DestinationsNavigator
+){
+    TaskScreen(
+        onBackButtonClick = {navigator.navigateUp()}
+    )
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TaskScreen(){
+private fun TaskScreen(
+    onBackButtonClick: () -> Unit
+){
 
     var isDeleteDialogOpen by rememberSaveable{mutableStateOf(false)}
     var isDatePickerDialogOpen by rememberSaveable{mutableStateOf(false)}
@@ -127,7 +149,7 @@ fun TaskScreen(){
                 isTaskExist = true,
                 isComplete = false,
                 checkBoxBorderColor = Red,
-                onBackButtonClick = {},
+                onBackButtonClick = onBackButtonClick,
                 onDeleteButtonClick = {isDeleteDialogOpen = true},
                 onCheckBoxClick = {},
             )
@@ -135,7 +157,8 @@ fun TaskScreen(){
     ){
         paddingValues ->
         Column(
-            modifier = Modifier.verticalScroll(state = rememberScrollState())
+            modifier = Modifier
+                .verticalScroll(state = rememberScrollState())
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(horizontal = 12.dp)
@@ -224,7 +247,9 @@ fun TaskScreen(){
             Button(
                 enabled = taskTitleError == null,
                 onClick = {},
-                modifier = Modifier.fillMaxWidth().padding(vertical = 20.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 20.dp)
             ) {
                 Text(text= "Save")
             }
@@ -278,11 +303,11 @@ private fun PriorityButton(
     onClick: () -> Unit
 ){
     Box(
-        modifier = modifier.
-        background(backgroundColor).
-        clickable{onClick()}
+        modifier = modifier
+            .background(backgroundColor)
+            .clickable { onClick() }
             .padding(5.dp)
-            .border(1.dp,borderColor, RoundedCornerShape(5.dp))
+            .border(1.dp, borderColor, RoundedCornerShape(5.dp))
             .padding(5.dp),
         contentAlignment = Alignment.Center
     ){
